@@ -3,7 +3,7 @@
 > 自己实现一个简单的 mvvm 框架.
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][travis-image]][travis-url] 
 
 来自网络的一张图，根据这张图的逻辑实现一个简单的 MVVM.
 ![](https://i.loli.net/2019/06/13/5d02062e2ebef58625.png)

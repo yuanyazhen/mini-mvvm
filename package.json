@@ -4,6 +4,7 @@
   "description": "Implementation of a mini-MVVM Framework",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/yuanyazhen/mini-mvvm/issues"
   },
-  "homepage": "https://github.com/yuanyazhen/mini-mvvm#readme"
+  "homepage": "https://github.com/yuanyazhen/mini-mvvm#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "dependencies": {}
 }
