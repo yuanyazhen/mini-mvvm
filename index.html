@@ -11,24 +11,32 @@
         body {
             padding: 20px;
         }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+            margin-bottom: 10px
+        }
+        h1 {
+            border-bottom: 1px solid #74cc8e;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" v-model="message">
-        {{message}}
+        <h1>mini-mvvm</h1>
+        <ul>
+            <li>
+                <input type="text" v-model="message">
+            </li>
+            <li>
+                {{message}}
+            </li>
+        </ul>
     </div>
-
-    <!-- <script src="js/MVVM.js"></script>
-    <script>
-        var app = new MVVM({
-            el: '#app',
-            data: {
-                message: 'Hello Vue!'
-            }
-        })
-    </script> -->
 </body>
 
 </html>
