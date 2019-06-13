@@ -1,0 +1,22 @@
+{
+  "name": "mini-mvvm",
+  "version": "1.0.0",
+  "description": "Implementation of a mini-MVVM Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanyazhen/mini-mvvm.git"
+  },
+  "keywords": [
+    "mvvm"
+  ],
+  "author": "yuanyazhen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuanyazhen/mini-mvvm/issues"
+  },
+  "homepage": "https://github.com/yuanyazhen/mini-mvvm#readme"
+}
