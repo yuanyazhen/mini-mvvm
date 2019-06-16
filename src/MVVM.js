@@ -1,5 +1,5 @@
-import Compiler from "./compiler";
-import Observer from "./observer";
+import Compiler from './compiler';
+import Observer from './observer';
 
 class MVVM {
   constructor(options) {
@@ -9,7 +9,7 @@ class MVVM {
     this.$data = data;
 
     if (!this.$el) {
-      console.log("no el param");
+      console.log('no el param');
       return;
     }
 
@@ -20,7 +20,7 @@ class MVVM {
     new Compiler(this.$el, this);
   }
   proxyData(data) {
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       Object.defineProperty(this, key, {
         get() {
           return data[key];

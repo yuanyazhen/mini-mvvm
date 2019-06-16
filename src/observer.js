@@ -1,15 +1,15 @@
-import Dep from "./dep";
+import { Dep } from './dep';
 
 export default class Observer {
   constructor(data) {
     this.observe(data);
   }
   observe(data) {
-    if (!data || typeof data !== "object") {
+    if (!data || typeof data !== 'object') {
       return;
     }
 
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       this.defineReactive(data, key, data[key]);
       this.observe(data[key]);
     });
