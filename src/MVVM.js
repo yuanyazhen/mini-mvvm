@@ -1,4 +1,5 @@
 import Compiler from './compiler';
+import Observer from './observer';
 
 class MVVM {
   constructor(options) {
@@ -12,7 +13,21 @@ class MVVM {
       return
     }
 
+    this.proxyData(this.$data);
+    new Observer(this.$data);
     new Compiler(this.$el, this)
+  }
+  proxyData(data) {
+    Object.keys(data).forEach(key => {
+      Object.defineProperty(this, key, {
+        get() {
+          return data[key]
+        },
+        set(newValue) {
+          data[key] = newValue
+        }
+      })
+    })
   }
 }
 

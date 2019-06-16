@@ -2,41 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 
-    <style>
-        body {
-            padding: 20px;
-        }
-        ul {
-            padding: 0;
-            margin: 0;
-        }
-        li {
-            list-style: none;
-            margin-bottom: 10px
-        }
-        h1 {
-            border-bottom: 1px solid #74cc8e;
-        }
-    </style>
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      margin-bottom: 10px
+    }
+
+    h1 {
+      border-bottom: 1px solid #74cc8e;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="app">
-        <h1>mini-mvvm</h1>
-        <ul>
-            <li>
-                <input type="text" v-model="message">
-            </li>
-            <li>
-                {{message}}
-            </li>
-        </ul>
+  <div id="app">
+    <h1>mini-mvvm</h1>
+    <input type="text" v-model="message">
+    <div>
+      {{text}}
     </div>
+    <!-- <ul>
+      <li>
+      </li>
+      <li>
+        {{text}}
+      </li>
+    </ul> -->
+  </div>
 </body>
 
 </html>

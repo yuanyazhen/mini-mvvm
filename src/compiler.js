@@ -1,3 +1,5 @@
+import Watcher from './watcher';
+
 export default class Compiler {
   constructor(el, vm) {
     this.el = el;
@@ -22,14 +24,12 @@ export default class Compiler {
   }
   compileElement(node) {
     let attrs = node.attributes;
-    if (attrs && Object.values(attrs)) {
-      Object.values(attrs).forEach(item => {
-        const { name, value } = item;
-        if (name.indexOf('v-') >= 0) {
-          compileUtils.model(node, value, this.vm);
-        }
-      })
-    }
+    [...attrs].forEach(item => {
+      const { name, value } = item;
+      if (name.indexOf('v-') >= 0) {
+        compileUtils.model(node, value, this.vm);
+      }
+    })
   }
   compileText(node) {
     // TODO: 多种情况的处理，比如 {{a}} {{b}}
@@ -54,6 +54,15 @@ export default class Compiler {
 }
 
 const compileUtils = {
+  setVal(vm, expr, value) {
+    expr = expr.split('.');
+    return expr.reduce((prev, next, currentIndex) => {
+      if (currentIndex === expr.length - 1) {
+        return prev[next] = value;
+      }
+      return prev[next];
+    }, vm.$data);
+  },
   /**
    *
    * @param {当前 DOM 节点} node
@@ -62,9 +71,25 @@ const compileUtils = {
    */
   text(node, expr, vm) {
     const param = expr.replace(/\{\{(.*?)\}\}/g, '$1');
+    new Watcher(vm, param.trim(), (newValue) => {
+      // 如果数据变化了，文本节点需要重新获取依赖的属性更新文本中的内容
+      // updateFn && updateFn(node, this.getTextVal(vm, expr));
+      this.updater['textUpdater'](node, vm, param.trim());
+    });
     this.updater['textUpdater'](node, vm, param.trim());
   },
   model(node, expr, vm) {
+    new Watcher(vm, expr, (newValue) => {
+      // 如果数据变化了，文本节点需要重新获取依赖的属性更新文本中的内容
+      // updateFn && updateFn(node, this.getTextVal(vm, expr));
+      this.updater['modelUpdater'](node, vm, expr);
+    });
+    node.addEventListener('input', (e) => {
+      let newValue = e.target.value;
+      // 监听输入事件将输入的内容设置到对应数据上
+      this.setVal(vm, expr, newValue)
+    });
+
     this.updater['modelUpdater'](node, vm, expr);
   },
   updater: {
