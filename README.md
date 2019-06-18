@@ -1,7 +1,5 @@
 # mini-mvvm
 
-> 自己实现一个简单的 mvvm 框架.
-
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url] 
 
